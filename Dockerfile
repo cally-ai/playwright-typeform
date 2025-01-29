@@ -1,20 +1,20 @@
-# Use the official Python image with Playwright preinstalled
+# Use Playwright’s official Python image
 FROM mcr.microsoft.com/playwright/python:v1.49.1-jammy
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the project files into the container
+# Copy project files
 COPY . /app/
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Ensure Playwright dependencies are installed
+# Force Playwright to install its browsers
 RUN playwright install --with-deps
 
-# Expose the port Railway uses
+# Expose Railway's default port
 ENV PORT=8080
 
-# Start the app using Gunicorn
+# Start the Flask app with Gunicorn
 CMD ["gunicorn", "playwright_script:app", "--bind", "0.0.0.0:8080"]
