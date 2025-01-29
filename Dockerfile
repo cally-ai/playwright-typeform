@@ -7,11 +7,11 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
-# Install dependencies
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright browsers
-RUN npx playwright install --with-deps
+# Install Playwright browsers (NO npx needed)
+RUN playwright install --with-deps
 
 # Expose port for Railway
 EXPOSE 8080
