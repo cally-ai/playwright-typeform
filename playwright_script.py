@@ -7,7 +7,7 @@ app = Flask(__name__)
 async def run_playwright(form_id):
     async with async_playwright() as p:
         # Launch browser with system-installed Chromium
-        browser = await p.chromium.launch(headless=True, executable_path="/usr/bin/chromium")
+        browser = await p.chromium.launch(headless=True)
         context = await browser.new_context()
         page = await context.new_page()
 
