@@ -1,0 +1,1 @@
+web: gunicorn playwright_script:app
